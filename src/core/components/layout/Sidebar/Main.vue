@@ -4,14 +4,14 @@
       <div class="sidebar-inner" v-if="!options.sidebarCollapse">
         <SidebarTrigger class="sidebar-trigger" />
         <div class="sidebar-item-list">
-          <div class="sidebar-item">About</div>
-          <br />
-          <div class="sidebar-item">Skills</div>
-          <br />
-          <div class="sidebar-item">Experience</div>
-          <br />
-          <div class="sidebar-item">Side projects</div>
-          <br />
+          <template v-for="item in sidebarItems">
+            <router-link :to="item.route" :key="'sidebar-item-' + item.label">
+              <div class="sidebar-item">
+                {{ item.label }}
+              </div>
+            </router-link>
+            <br :key="'sidebar-item-br-' + item.label" />
+          </template>
         </div>
       </div>
     </transition>
@@ -40,9 +40,29 @@ export default defineComponent({
     const { options } = useState(['options'])
     const { SET_SIDEBAR_COLLAPSE } = useMutations(['SET_SIDEBAR_COLLAPSE'])
 
+    const sidebarItems = [
+      {
+        label: 'About',
+        route: { name: 'about' },
+      },
+      {
+        label: 'Skills',
+        route: { name: 'skills' },
+      },
+      {
+        label: 'Experience',
+        route: { name: 'experience' },
+      },
+      {
+        label: 'Projects',
+        route: { name: 'projects' },
+      },
+    ]
+
     return {
       options,
       setSidebarCollapse: SET_SIDEBAR_COLLAPSE,
+      sidebarItems,
     }
   },
 })

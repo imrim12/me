@@ -1,11 +1,10 @@
 import qs from 'qs'
-import { authApi } from '@/core/services/auth'
 import { blogMutations } from './enums'
 import { clientApi } from '@/core/services/client'
 
 export const actions = {
   async fetchData({ state, commit }) {
-    const response = await authApi.get(
+    const response = await clientApi.get(
       'blogs?' + qs.stringify(state.query, { arrayFormat: 'repeat' })
     )
     commit(blogMutations.SET.DATA, response.data.data, { root: true })
@@ -22,15 +21,15 @@ export const actions = {
     return response
   },
   async submitSingle(_, form) {
-    const response = await authApi.post('/blogs', form)
+    const response = await clientApi.post('/blogs', form)
     return response
   },
   async updateSingle(_, { id, form }) {
-    const response = await authApi.put('/blogs/' + id, form)
+    const response = await clientApi.put('/blogs/' + id, form)
     return response
   },
   async deleteSingle(_, id) {
-    const response = await authApi.delete('/blogs/' + id)
+    const response = await clientApi.delete('/blogs/' + id)
     return response
   },
 }

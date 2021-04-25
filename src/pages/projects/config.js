@@ -2,11 +2,10 @@ import index from './index.vue'
 
 export const routes = [
   {
-    name: 'auth-signup',
-    path: '/auth/signup',
+    path: '/projects',
     component: index,
     meta: {
-      authNotRequired: true,
+      //
     },
   },
 ]

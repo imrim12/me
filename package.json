@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "vue-cli-service serve",
-    "build": "vue-cli-service build --dest docs && set NODE_ENV=production && echo nguyenhuunguyeny.com > docs/CNAME && git add . && git commit -m Deploy && git push origin master",
+    "build": "vue-cli-service build --dest docs && set NODE_ENV=production && echo nguyenhuunguyeny.com > docs/CNAME",
     "lint": "vue-cli-service lint",
     "lintfix": "eslint --fix --ext .js,.vue --ignore-path .gitignore ."
   },

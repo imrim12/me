@@ -2,11 +2,10 @@ import index from './index.vue'
 
 export const routes = [
   {
-    name: 'auth-signin',
-    path: '/auth/signin',
+    path: '/experience',
     component: index,
     meta: {
-      authNotRequired: true,
+      //
     },
   },
 ]

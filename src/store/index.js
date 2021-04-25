@@ -3,7 +3,6 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import { camelCase } from 'lodash'
 import { rootActions, rootMutations } from './enums'
-import { authMutations } from './auth/enums'
 
 Vue.use(Vuex)
 
@@ -43,8 +42,6 @@ export const store = new Vuex.Store({
   actions: {
     vueServerInit({ rootState, commit }) {
       if (!rootState.vueServerReady) {
-        const auth = localStorage.getItem('auth')
-        commit(authMutations.SET.AUTH, auth ? JSON.parse(auth) : null, {root: true})
         commit(rootMutations.SET.VUE_SERVER_READY, true)
       }
     }

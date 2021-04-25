@@ -1,29 +1,26 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import about from '@pages/about/config'
+// Pages
 import home from '@pages/home/config'
+import about from '@pages/about/config'
+import projects from '@pages/projects/config'
+import experience from '@pages/experience/config'
+import skills from '@pages/skills/config'
 // Sandbox
 import sandbox from '@/core/pages/sandbox/config'
-// Auth pages
-import authForgotPassword from '@pages/auth/forgot-password/config'
-import authSignup from '@pages/auth/signup/config'
-import authSignin from '@pages/auth/signin/config'
 // Errors
 import errorPages from '@/core/pages/error/config'
-// Middleware
-import { auth } from '@middleware/auth'
 
 Vue.use(VueRouter)
 
 const routes = [
   ...sandbox.routes,
   // Pages
-  ...about.routes,
   ...home.routes,
-  // Auth pages
-  ...authForgotPassword.routes,
-  ...authSignup.routes,
-  ...authSignin.routes,
+  ...about.routes,
+  ...projects.routes,
+  ...experience.routes,
+  ...skills.routes,
   // Error pages
   ...errorPages.routes,
 ]
@@ -35,6 +32,6 @@ const router = new VueRouter({
 })
 
 // Global middleware
-router.beforeEach(auth)
+// router.beforeEach()
 
 export default router

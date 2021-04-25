@@ -15,9 +15,6 @@
 // Import layout components here
 import defaultLayout from '@layouts/default.vue'
 import blankLayout from '@layouts/blank.vue'
-// Auth
-import unauthLayout from '@layouts/auth/unauth.vue'
-import authLayout from '@layouts/auth/index.vue'
 // Error
 import errorLayout from '@layouts/error/index.vue'
 // Responsive
@@ -30,8 +27,6 @@ export default {
   components: {
     defaultLayout,
     blankLayout,
-    unauthLayout,
-    authLayout,
     errorLayout,
     mobileLayout,
   },
