@@ -6,7 +6,12 @@
         <div class="sidebar-item-list">
           <template v-for="item in sidebarItems">
             <router-link :to="item.route" :key="'sidebar-item-' + item.label">
-              <div class="sidebar-item">
+              <div
+                class="sidebar-item"
+                :class="{
+                  active: item.route.name === $route.name,
+                }"
+              >
                 {{ item.label }}
               </div>
             </router-link>
@@ -41,6 +46,10 @@ export default defineComponent({
     const { SET_SIDEBAR_COLLAPSE } = useMutations(['SET_SIDEBAR_COLLAPSE'])
 
     const sidebarItems = [
+      {
+        label: 'Home',
+        route: { name: 'home' },
+      },
       {
         label: 'About',
         route: { name: 'about' },
@@ -92,6 +101,11 @@ export default defineComponent({
     @apply h-1 w-0 bg-primary absolute bottom-4 left-0 duration-300;
   }
   &:hover {
+    &::after {
+      @apply w-full;
+    }
+  }
+  &.active {
     &::after {
       @apply w-full;
     }
