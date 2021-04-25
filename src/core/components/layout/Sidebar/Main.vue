@@ -5,16 +5,16 @@
         <SidebarTrigger class="sidebar-trigger" />
         <div class="sidebar-item-list">
           <template v-for="item in sidebarItems">
-            <router-link :to="item.route" :key="'sidebar-item-' + item.label">
-              <div
-                class="sidebar-item"
-                :class="{
-                  active: item.route.name === $route.name,
-                }"
-              >
-                {{ item.label }}
-              </div>
-            </router-link>
+            <div
+              :key="'sidebar-item-' + item.label"
+              :class="{
+                active: item.route.name === $route.name,
+              }"
+              class="sidebar-item"
+              @click="navigateTo(item.route)"
+            >
+              {{ item.label }}
+            </div>
             <br :key="'sidebar-item-br-' + item.label" />
           </template>
         </div>
@@ -33,6 +33,8 @@
 // src\core\components\layout\Sidebar\Main.vue
 import { defineComponent } from '@vue/composition-api'
 import { useState, useMutations } from 'vuex-composition-helpers'
+
+import { router } from '@router'
 
 import SidebarTrigger from './SidebarTrigger.vue'
 
@@ -68,10 +70,18 @@ export default defineComponent({
       },
     ]
 
+    const navigateTo = (route) => {
+      SET_SIDEBAR_COLLAPSE(true)
+      setTimeout(() => {
+        router.push(route)
+      }, 500)
+    }
+
     return {
       options,
       setSidebarCollapse: SET_SIDEBAR_COLLAPSE,
       sidebarItems,
+      navigateTo,
     }
   },
 })

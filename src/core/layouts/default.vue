@@ -1,7 +1,7 @@
 <template>
   <div class="default_layout-wrapper">
     <Sidebar />
-    <MyMagicTitle />
+    <MyMagicalTitle />
     <slot />
   </div>
 </template>
@@ -9,13 +9,13 @@
 // src\core\layouts\default.vue
 import { defineComponent } from '@vue/composition-api'
 
-import { Sidebar, MyMagicTitle } from '@/core/components/layout'
+import { Sidebar, MyMagicalTitle } from '@/core/components/layout'
 
 export default defineComponent({
   name: 'defaultLayout',
   components: {
     Sidebar,
-    MyMagicTitle,
+    MyMagicalTitle,
   },
   props: {},
   setup() {

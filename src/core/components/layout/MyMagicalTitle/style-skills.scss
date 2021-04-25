@@ -1,0 +1,26 @@
+.my-magic-title {
+  /* SKILLS PAGE OVERRIDE */
+  &.skills {
+    h1 {
+      //
+    }
+
+    @media (max-width: 1280px) {
+      //
+    }
+
+    // Pixel XL
+    // iPhone X landscape
+    @media (max-width: 823px) {
+      h1 {
+        //
+      }
+    }
+
+    @media (max-width: 768px) {
+      h1 {
+        //
+      }
+    }
+  }
+}

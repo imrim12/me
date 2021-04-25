@@ -89,9 +89,3 @@ export default defineComponent({
   }
 }
 </style>
-
-<style lang="scss">
-.sidebar-trigger {
-  //
-}
-</style>

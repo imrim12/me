@@ -1,0 +1,83 @@
+.my-magic-title {
+  /* DEFAULT STYLE */
+  @apply w-[800px] h-[600px] absolute top-1/2 left-1/2 transform text-primary z-10 duration-500;
+
+  --tw-translate-x: -75%;
+  --tw-translate-y: -50%;
+
+  h1 {
+    @apply absolute top-[5rem] text-[10rem] font-bold duration-300;
+  }
+
+  h2 {
+    @apply absolute top-[16rem] text-[8rem] font-bold duration-300;
+  }
+
+  h3 {
+    @apply absolute top-[26rem] text-[6rem] font-bold duration-300;
+  }
+
+  .my-magic-title-sidebar-trigger {
+    @apply absolute top-10 duration-300;
+  }
+
+  .my-name {
+    @apply absolute top-0 left-32 text-[6rem] duration-300;
+  }
+
+  @media (max-width: 1280px) {
+    --tw-translate-x: 0;
+    @apply left-0;
+  }
+
+  // Pixel XL
+  // iPhone X landscape
+  @media (max-width: 823px) {
+    @apply w-[320px] h-[320px];
+
+    h1 {
+      @apply absolute top-12 text-[6.5rem];
+    }
+
+    h2 {
+      @apply absolute top-[9rem] text-[5rem];
+    }
+
+    h3 {
+      @apply absolute top-[14rem] text-[4rem];
+    }
+
+    .my-magic-title-sidebar-trigger {
+      @apply top-8 left-[0.35rem];
+    }
+
+    .my-name {
+      @apply top-3 left-14 text-[3.5rem];
+    }
+  }
+
+  @media (max-width: 768px) {
+    @apply w-[320px] h-[220px];
+
+    h1 {
+      @apply absolute top-[3rem] text-[3.5rem];
+    }
+
+    h2 {
+      @apply absolute top-[7rem] text-[3rem];
+    }
+
+    h3 {
+      @apply absolute top-[11rem] text-[2rem];
+    }
+
+    .my-magic-title-sidebar-trigger {
+      @apply top-[1.85rem] left-[0.35rem];
+    }
+
+    .my-name {
+      @apply top-3 left-12 text-[2.5rem];
+    }
+  }
+
+}

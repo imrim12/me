@@ -1,16 +1,21 @@
 <template>
   <div class="home_page-wrapper">
     <div class="h-full flex-1"></div>
-    <div class="home_page_avatar-container h-full flex-1"></div>
+    <div class="home_page_avatar-container h-full flex-1">
+      <img
+        src="/img/me/1.jpg"
+        alt="Nguyễn Hữu Nguyên Ý"
+        class="duration-500"
+        style="opacity: 0;"
+        onload="this.style.opacity = 1"
+      />
+    </div>
   </div>
 </template>
 <script>
 import { defineComponent } from '@vue/composition-api'
 export default defineComponent({
   name: 'HomePage',
-  setup() {
-    //
-  },
 })
 </script>
 
@@ -23,11 +28,16 @@ export default defineComponent({
 }
 .home_page_avatar-container {
   position: relative;
-  background-image: url(/img/me/1.jpg);
-  background-position-x: -180px;
-  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  img {
+    height: 100%;
+    object-fit: cover;
+  }
+
   @media (max-width: 1280px) {
-    background-position: center;
     &::after {
       content: '';
       @apply w-full h-full bg-white opacity-40 absolute top-0 right-0 z-0;
