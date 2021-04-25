@@ -5,7 +5,9 @@
       dark: isDarkMode,
     }"
   >
-    <router-view @layout="updateLayout" />
+    <transition name="fade" mode="out-in">
+      <router-view @layout="updateLayout" />
+    </transition>
   </component>
 </template>
 

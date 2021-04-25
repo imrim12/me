@@ -1,21 +1,26 @@
 <template>
-  <div class="home">
-    <h1>This is an home page</h1>
+  <div class="home_page-wrapper">
+    <h1>This is an home page d</h1>
   </div>
 </template>
 <script>
-import { mapActions } from 'vuex'
-import { blogActions } from '@/store/blog/enums'
 import { defineComponent } from '@vue/composition-api'
 export default defineComponent({
   name: 'HomePage',
-  methods: {
-    ...mapActions({
-      fetchBlogs: blogActions.FETCH.DATA,
-    }),
-  },
-  created() {
-    this.fetchBlogs()
+  setup() {
+    //
   },
 })
 </script>
+
+<style lang="scss" scoped>
+.home_page-wrapper {
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--color-yellow);
+}
+</style>
+
+<style lang="scss">
+//
+</style>
