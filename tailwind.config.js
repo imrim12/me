@@ -1,6 +1,8 @@
 const colors = require('./src/core/constants/config/tailwindcss/colors')
-const screens = require('./src/core/constants/config/tailwindcss/screens')
 const extend = require('./src/core/constants/config/tailwindcss/extend')
+const fontFamily = require('./src/core/constants/config/tailwindcss/font-family')
+const screens = require('./src/core/constants/config/tailwindcss/screens')
+
 module.exports = {
   mode: 'jit', // New in 2.1+
   // See tailwindCSS darkmode docs: https://tailwindcss.com/docs/dark-mode
@@ -11,6 +13,7 @@ module.exports = {
     extend: {
       screens,
       colors,
+      fontFamily,
     },
   },
   variants: {

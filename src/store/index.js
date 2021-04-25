@@ -26,12 +26,15 @@ export const store = new Vuex.Store({
   state: {
     vueServerReady: false,
     options: {
-      sidebarCollapsed: false,
+      sidebarCollapse: true,
     }
   },
   mutations: {
     TOGGLE_SIDEBAR_COLLAPSE(state) {
-      Vue.set(state.options, 'sidebarCollapsed', !state.options.sidebarCollapsed)
+      Vue.set(state.options, 'sidebarCollapse', !state.options.sidebarCollapse)
+    },
+    SET_SIDEBAR_COLLAPSE(state, sidebarCollapse) {
+      Vue.set(state.options, 'sidebarCollapse', sidebarCollapse)
     },
     SET_VUE_SERVER_READY(state, vueServerReady) {
       Vue.set(state, 'vueServerReady', vueServerReady)

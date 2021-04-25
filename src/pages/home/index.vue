@@ -1,6 +1,7 @@
 <template>
   <div class="home_page-wrapper">
-    <h1>This is an home page d</h1>
+    <div class="h-full flex-1"></div>
+    <div class="home_page_avatar-container h-full flex-1"></div>
   </div>
 </template>
 <script>
@@ -15,9 +16,23 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .home_page-wrapper {
+  display: flex;
+  flex-direction: row;
   width: 100vw;
   height: 100vh;
-  background-color: var(--color-yellow);
+}
+.home_page_avatar-container {
+  position: relative;
+  background-image: url(/img/me/1.jpg);
+  background-position-x: -180px;
+  background-size: cover;
+  @media (max-width: 1280px) {
+    background-position: center;
+    &::after {
+      content: '';
+      @apply w-full h-full bg-white opacity-40 absolute top-0 right-0 z-0;
+    }
+  }
 }
 </style>
 
