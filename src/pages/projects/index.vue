@@ -1,6 +1,6 @@
 <template>
   <div class="projects_page-wrapper bg-gray-200">
-    <h1>This is an projects page</h1>
+    <!-- <h1>This is an projects page</h1> -->
   </div>
 </template>
 <script>
