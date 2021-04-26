@@ -1,28 +1,38 @@
 .my-magic-title {
   /* DEFAULT STYLE */
-  @apply w-[800px] h-[600px] absolute top-1/2 left-1/2 transform text-primary z-10 duration-500;
+  width: 800px;
+  height: 500px;
+  overflow: hidden;
+
+  @apply absolute top-1/2 left-1/2 z-10;
+  @apply text-primary duration-500;
+  @apply transform;
 
   --tw-translate-x: -75%;
   --tw-translate-y: -50%;
 
-  h1 {
-    @apply absolute top-[5rem] text-[10rem] font-bold duration-300;
-  }
+  .my-magical-title-item {
+    transform-origin: center;
+    @apply font-bold duration-300;
 
-  h2 {
-    @apply absolute top-[16rem] text-[8rem] font-bold duration-300;
-  }
-
-  h3 {
-    @apply absolute top-[26rem] text-[6rem] font-bold duration-300;
-  }
-
-  .my-magic-title-sidebar-trigger {
-    @apply absolute top-10 duration-300;
+    &:nth-child(1) {
+      @apply text-[10rem];
+      @apply leading-[10rem];
+    }
+    &:nth-child(2) {
+      @apply text-[8rem];
+      @apply leading-[8rem];
+    }
+    &:nth-child(3) {
+      @apply text-[6rem];
+      @apply leading-[6rem];
+    }
   }
 
   .my-name {
-    @apply absolute top-0 left-32 text-[6rem] duration-300;
+    @apply text-[6rem] leading-[6rem];
+    @apply duration-300;
+    @apply ml-5;
   }
 
   @media (max-width: 1280px) {
@@ -33,50 +43,50 @@
   // Pixel XL
   // iPhone X landscape
   @media (max-width: 823px) {
-    @apply w-[320px] h-[320px];
+    width: 520px;
+    height: 360px;
 
-    h1 {
-      @apply absolute top-12 text-[6.5rem];
-    }
-
-    h2 {
-      @apply absolute top-[9rem] text-[5rem];
-    }
-
-    h3 {
-      @apply absolute top-[14rem] text-[4rem];
-    }
-
-    .my-magic-title-sidebar-trigger {
-      @apply top-8 left-[0.35rem];
+    .my-magical-title-item {
+      &:nth-child(1) {
+        @apply text-[6.5rem];
+        @apply leading-[6.5rem];
+      }
+      &:nth-child(2) {
+        @apply text-[5rem];
+        @apply leading-[5rem];
+      }
+      &:nth-child(3) {
+        @apply text-[4rem];
+        @apply leading-[4rem];
+      }
     }
 
     .my-name {
-      @apply top-3 left-14 text-[3.5rem];
+      @apply text-[3.5rem] leading-[3.5rem];
     }
   }
 
   @media (max-width: 768px) {
-    @apply w-[320px] h-[220px];
+    width: 320px;
+    height: 220px;
 
-    h1 {
-      @apply absolute top-[3rem] text-[3.5rem];
-    }
-
-    h2 {
-      @apply absolute top-[7rem] text-[3rem];
-    }
-
-    h3 {
-      @apply absolute top-[11rem] text-[2rem];
-    }
-
-    .my-magic-title-sidebar-trigger {
-      @apply top-[1.85rem] left-[0.35rem];
+    .my-magical-title-item {
+      &:nth-child(1) {
+        @apply text-[3.5rem];
+        @apply leading-[3.5rem];
+      }
+      &:nth-child(2) {
+        @apply text-[3rem];
+        @apply leading-[3rem];
+      }
+      &:nth-child(3) {
+        @apply text-[2rem];
+        @apply leading-[2rem];
+      }
     }
 
     .my-name {
-      @apply top-3 left-12 text-[2.5rem];
+      @apply text-[2.5rem] leading-[2.5rem];
     }
   }
 

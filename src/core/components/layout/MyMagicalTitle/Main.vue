@@ -1,21 +1,24 @@
 <template>
   <div class="my-magic-title" :class="[$route.name]">
-    <div class="pl-3 mb-2 flex items-center">
-      <SidebarTrigger class="my-magic-title-sidebar-trigger" />
-      <!-- Only display my name in home page -->
-      <div class="my-name" v-if="$route.name === 'home'">
-        {{ myName }}
+    <transition name="fade" mode="out-in">
+      <div class="pl-3 mb-2 flex items-center" v-if="$route.name === 'home'">
+        <SidebarTrigger class="my-magic-title-sidebar-trigger duration-300" />
+        <!-- Only display my name in home page -->
+        <div class="my-name">
+          {{ myName }}
+        </div>
       </div>
-    </div>
-    <transition name="fade" mode="out-in">
-      <h1 v-if="title.h1">{{ title.h1 }}</h1>
     </transition>
-    <transition name="fade" mode="out-in">
-      <h2 v-if="title.h2">{{ title.h2 }}</h2>
-    </transition>
-    <transition name="fade" mode="out-in">
-      <h3 v-if="title.h3">{{ title.h3 }}</h3>
-    </transition>
+    <transition-group name="list" tag="div">
+      <component
+        :is="item.tag"
+        v-for="item of title"
+        :key="item.label"
+        class="list-item my-magical-title-item"
+      >
+        {{ item.label }}
+      </component>
+    </transition-group>
   </div>
 </template>
 <script>
@@ -48,7 +51,3 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped src="./style-default.scss"></style>
-<style lang="scss" scoped src="./style-about.scss"></style>
-<style lang="scss" scoped src="./style-experience.scss"></style>
-<style lang="scss" scoped src="./style-projects.scss"></style>
-<style lang="scss" scoped src="./style-skills.scss"></style>

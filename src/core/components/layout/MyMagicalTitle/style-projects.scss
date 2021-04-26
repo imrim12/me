@@ -1,8 +1,20 @@
 .my-magic-title {
   /* PROJECTS PAGE OVERRIDE */
   &.projects {
+    width: 100vw;
+    height: 100vh;
+
+    @apply top-0 left-0;
+
+    --tw-translate-x: 0;
+    --tw-translate-y: 0;
+
     h1 {
-      //
+      @apply top-0 right-0 leading-[8rem];
+    }
+
+    .my-magic-title-sidebar-trigger {
+      @apply top-0 left-0;
     }
 
     @media (max-width: 1280px) {
@@ -12,14 +24,22 @@
     // Pixel XL
     // iPhone X landscape
     @media (max-width: 823px) {
+
       h1 {
-        //
+        @apply top-0 right-0 leading-[3rem] text-[4rem];
+      }
+
+      .my-magic-title-sidebar-trigger {
+        @apply top-0 left-0;
       }
     }
 
     @media (max-width: 768px) {
       h1 {
         //
+      }
+      .my-magic-title-sidebar-trigger {
+        @apply top-0 left-0;
       }
     }
   }
