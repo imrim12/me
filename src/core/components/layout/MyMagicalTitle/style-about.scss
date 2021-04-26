@@ -1,45 +1,56 @@
 .my-magic-title {
   /* ABOUT PAGE OVERRIDE */
   &.about {
-    width: 100vw;
-    height: 100vh;
+    width: 480px;
+    height: 140px;
 
-    @apply top-0 left-0;
+    @apply top-0 left-full;
+    @apply transform;
 
-    --tw-translate-x: 0;
+    --tw-translate-x: -100%;
     --tw-translate-y: 0;
 
-    h1 {
-      @apply top-0 right-0 leading-[8rem];
-    }
-
-    .my-magic-title-sidebar-trigger {
-      @apply top-0 left-0;
+    .my-magical-title-item {
+      &:nth-child(1) {
+        @apply text-[10rem];
+        @apply leading-[10rem];
+      }
     }
 
     @media (max-width: 1280px) {
-      //
+      width: 380px;
+      height: 120px;
+      .my-magical-title-item {
+        &:nth-child(1) {
+          @apply text-[8rem];
+          @apply leading-[8rem];
+        }
+      }
     }
 
     // Pixel XL
     // iPhone X landscape
     @media (max-width: 823px) {
+      width: 310px;
+      height: 100px;
 
-      h1 {
-        @apply top-0 right-0 leading-[3rem] text-[4rem];
-      }
-
-      .my-magic-title-sidebar-trigger {
-        @apply top-0 left-0;
+      .my-magical-title-item {
+        &:nth-child(1) {
+          @apply text-[6.5rem];
+          @apply leading-[6.5rem];
+        }
       }
     }
 
     @media (max-width: 768px) {
-      h1 {
-        //
-      }
-      .my-magic-title-sidebar-trigger {
-        @apply top-0 left-0;
+      width: 170px;
+      height: 60px;
+
+      .my-magical-title-item {
+        &:nth-child(1) {
+          @apply text-[3.5rem];
+          @apply leading-[3.5rem];
+        }
       }
     }
   }

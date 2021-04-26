@@ -1,45 +1,66 @@
 .my-magic-title {
   /* PROJECTS PAGE OVERRIDE */
   &.projects {
-    width: 100vw;
-    height: 100vh;
+    width: 520px;
+    height: 140px;
+    transform-origin: left;
 
-    @apply top-0 left-0;
+    @apply top-full left-0;
+    @apply transform;
 
-    --tw-translate-x: 0;
-    --tw-translate-y: 0;
+    --tw-rotate: 90deg;
+    --tw-translate-x: 12%;
+    --tw-translate-y: -415%;
 
-    h1 {
-      @apply top-0 right-0 leading-[8rem];
-    }
-
-    .my-magic-title-sidebar-trigger {
-      @apply top-0 left-0;
+    .my-magical-title-item {
+      &:nth-child(1) {
+        @apply text-[8rem];
+        @apply leading-[8rem];
+      }
     }
 
     @media (max-width: 1280px) {
-      //
+      width: 530px;
+      height: 140px;
+
+      --tw-translate-x: 70px;
+      --tw-translate-y: -415%;
+      .my-magical-title-item {
+        &:nth-child(1) {
+          @apply text-[8rem];
+          @apply leading-[8rem];
+        }
+      }
     }
 
     // Pixel XL
     // iPhone X landscape
     @media (max-width: 823px) {
+      width: 420px;
+      height: 110px;
 
-      h1 {
-        @apply top-0 right-0 leading-[3rem] text-[4rem];
-      }
+      --tw-translate-x: 60px;
+      --tw-translate-y: -425%;
 
-      .my-magic-title-sidebar-trigger {
-        @apply top-0 left-0;
+      .my-magical-title-item {
+        &:nth-child(1) {
+          @apply text-[6.5rem];
+          @apply leading-[6.5rem];
+        }
       }
     }
 
     @media (max-width: 768px) {
-      h1 {
-        //
-      }
-      .my-magic-title-sidebar-trigger {
-        @apply top-0 left-0;
+      width: 240px;
+      height: 60px;
+
+      --tw-translate-x: 30px;
+
+      .my-magical-title-item {
+        &:nth-child(1) {
+          @apply text-[3.5rem];
+          @apply leading-[3.5rem];
+        }
       }
     }
   }

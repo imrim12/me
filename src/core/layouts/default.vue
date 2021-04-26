@@ -26,12 +26,8 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .default_layout-wrapper {
-  //
-}
-</style>
-
-<style lang="scss">
-.default_layout-wrapper {
-  //
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
 }
 </style>

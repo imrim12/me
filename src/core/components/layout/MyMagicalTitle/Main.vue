@@ -51,3 +51,7 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped src="./style-default.scss"></style>
+<style lang="scss" scoped src="./style-about.scss"></style>
+<style lang="scss" scoped src="./style-experience.scss"></style>
+<style lang="scss" scoped src="./style-projects.scss"></style>
+<style lang="scss" scoped src="./style-skills.scss"></style>
