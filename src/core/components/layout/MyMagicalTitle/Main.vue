@@ -15,6 +15,7 @@
         v-for="item of title"
         :key="item.label"
         class="list-item my-magical-title-item"
+        @click="rickRoll(item)"
       >
         {{ item.label }}
       </component>
@@ -45,6 +46,12 @@ export default defineComponent({
   watch: {
     routerName() {
       this.setMagicalTitle()
+    },
+  },
+  methods: {
+    rickRoll(item) {
+      if (item.label === 'Memer')
+        window.location = 'https://youtu.be/dQw4w9WgXcQ'
     },
   },
 })
