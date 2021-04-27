@@ -1,5 +1,5 @@
 <template>
-  <div class="home_page-wrapper">
+  <div class="home_page-wrapper page">
     <div class="h-full flex-1"></div>
     <div class="home_page_avatar-container h-full flex-1">
       <img
@@ -23,8 +23,9 @@ export default defineComponent({
 .home_page-wrapper {
   display: flex;
   flex-direction: row;
-  width: 100vw;
-  height: 100vh;
+
+  /* width: 100vw;
+  height: 100vh; */
 }
 .home_page_avatar-container {
   position: relative;

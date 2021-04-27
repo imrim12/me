@@ -4,8 +4,8 @@
   height: 500px;
   overflow: hidden;
 
-  @apply absolute top-1/2 left-1/2 z-10;
-  @apply text-primary duration-500;
+  @apply absolute top-1/2 left-1/2 z-30;
+  @apply text-primary duration-300 ease-in-out;
   @apply transform;
 
   --tw-translate-x: -75%;

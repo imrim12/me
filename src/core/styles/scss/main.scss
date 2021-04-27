@@ -8,6 +8,10 @@
   @apply font-google;
 }
 
+.page {
+  @apply w-screen h-screen overflow-hidden;
+}
+
 // Tailwindcss breakpoints:
 // 2xl
 // Double extra large devices (large desktops, 1536px and up)

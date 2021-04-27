@@ -1,5 +1,5 @@
 <template>
-  <div class="projects_page-wrapper bg-gray-200">
+  <div class="projects_page-wrapper page bg-gray-200">
     <!-- <h1>This is an projects page</h1> -->
   </div>
 </template>
@@ -17,7 +17,7 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .projects_page-wrapper {
-  width: 100vw;
-  height: 100vh;
+  /* width: 100vw;
+  height: 100vh; */
 }
 </style>

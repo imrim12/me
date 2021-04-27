@@ -1,5 +1,5 @@
 <template>
-  <div class="skills_page-wrapper bg-gray-200">
+  <div class="skills_page-wrapper page bg-gray-200">
     <!-- <h1>This is skills page</h1> -->
   </div>
 </template>
@@ -17,7 +17,7 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .skills_page-wrapper {
-  width: 100vw;
-  height: 100vh;
+  /* width: 100vw;
+  height: 100vh; */
 }
 </style>
