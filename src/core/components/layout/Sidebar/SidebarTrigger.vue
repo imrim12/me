@@ -36,7 +36,7 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .sidebar-trigger {
-  @apply w-20 h-16 cursor-pointer duration-300 transform hover:rotate-12;
+  @apply w-20 h-16 cursor-pointer duration-300 transform hover:rotate-12 relative;
   .bar {
     @apply h-3 w-full bg-primary absolute duration-300;
     &:nth-child(1) {
@@ -50,6 +50,23 @@ export default defineComponent({
     }
     &:nth-child(3) {
       @apply bottom-0 transform;
+    }
+  }
+  &::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    width: 90%;
+    height: 120%;
+    content: '';
+    background-color: white;
+    transition-duration: 300ms;
+  }
+  &:hover {
+    &::after {
+      width: 100%;
+      height: 100%;
     }
   }
   .expanded {
@@ -78,6 +95,10 @@ export default defineComponent({
     @apply w-10 h-10;
     .bar {
       @apply h-2;
+    }
+    &::after {
+      width: 120%;
+      height: 120%;
     }
   }
 

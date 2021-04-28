@@ -40,6 +40,8 @@
     @media (max-width: 1280px) {
       width: 380px;
       height: 120px;
+
+      --tw-translate-y: -120px;
       .my-magical-title-item {
         &:nth-child(1) {
           @apply text-[8rem];
@@ -54,6 +56,7 @@
       width: 310px;
       height: 100px;
 
+      --tw-translate-y: -100px;
       .my-magical-title-item {
         &:nth-child(1) {
           @apply text-[6.5rem];
@@ -66,6 +69,7 @@
       width: 170px;
       height: 60px;
 
+      --tw-translate-y: -60px;
       .my-magical-title-item {
         &:nth-child(1) {
           @apply text-[3.5rem];

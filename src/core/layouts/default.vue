@@ -3,7 +3,7 @@
     <Sidebar />
     <SidebarTrigger
       v-if="$route.name !== 'home'"
-      class="fixed top-0 left-0 duration-300"
+      class="fixed top-0 left-0 z-10 duration-300"
     />
     <MyMagicalTitle />
     <slot />

@@ -23,9 +23,6 @@ export default defineComponent({
 .home_page-wrapper {
   display: flex;
   flex-direction: row;
-
-  /* width: 100vw;
-  height: 100vh; */
 }
 .home_page_avatar-container {
   position: relative;
