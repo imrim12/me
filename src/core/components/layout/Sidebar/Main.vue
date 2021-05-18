@@ -52,10 +52,10 @@ export default defineComponent({
         label: 'Home',
         route: { name: 'home' },
       },
-      {
-        label: 'About',
-        route: { name: 'about' },
-      },
+      // {
+      //   label: 'About',
+      //   route: { name: 'about' },
+      // },
       {
         label: 'Skills',
         route: { name: 'skills' },
@@ -64,10 +64,10 @@ export default defineComponent({
         label: 'Experience',
         route: { name: 'experience' },
       },
-      {
-        label: 'Projects',
-        route: { name: 'projects' },
-      },
+      // {
+      //   label: 'Projects',
+      //   route: { name: 'projects' },
+      // },
     ]
 
     const navigateTo = (route) => {
