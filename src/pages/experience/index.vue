@@ -1,37 +1,71 @@
 <template>
   <div class="experience_page-wrapper page bg-gray-200">
-    <div class="experience_page-inner">
-      <h1>Google developer student clubs - Lead</h1>
-      <p>
-        After spending one year in DSC, I wanted to lead the community to build
-        amazing products for the community, hold technology events for students
-        in my campus.
-      </p>
+    <div class="experience_page-inner" :style="experienceActiveTab.theme">
+      <h1>{{ experienceActiveTab.place }} - {{ experienceActiveTab.role }}</h1>
+      <p>{{ experienceActiveTab.description }}</p>
       <div>
-        #DSC-DUT #Google #Developer student clubs
+        <a
+          :href="tag.url"
+          target="_blank"
+          v-for="tag in experienceActiveTab.tags"
+          :key="'experience-tag-' + tag.label"
+        >
+          <b>#{{ tag.label }} </b>
+        </a>
       </div>
     </div>
     <div class="experience_page-image">
-      <img src="/img/me/8.jpg" alt="DSC Info Session 2020" />
+      <transition name="fade" mode="out-in">
+        <img
+          :key="experienceActiveTab.image.src"
+          :src="experienceActiveTab.image.src"
+          :alt="experienceActiveTab.image.alt"
+        />
+      </transition>
     </div>
     <div class="experience_page-indicators">
-      <div class="up">
+      <div class="up" @click="experienceTabPrev">
         <i class="fas fa-chevron-up"></i>
       </div>
-      <div class="down">
+      <div class="down" @click="experienceTabNext">
         <i class="fas fa-chevron-down"></i>
       </div>
     </div>
   </div>
 </template>
 <script>
-import { defineComponent } from '@vue/composition-api'
+import { computed, defineComponent, ref } from '@vue/composition-api'
+import { data } from './config'
 
 export default defineComponent({
   name: 'ExperiencePage',
   props: {},
   setup() {
-    //
+    const experienceActiveTabIndex = ref(0)
+    const experiences = ref(data)
+    const experienceActiveTab = computed(
+      () => experiences.value[experienceActiveTabIndex.value]
+    )
+    const experienceTabPrev = () => {
+      if (experienceActiveTabIndex.value === 0) {
+        experienceActiveTabIndex.value = experiences.value.length - 1
+      } else {
+        experienceActiveTabIndex.value--
+      }
+    }
+    const experienceTabNext = () => {
+      if (experienceActiveTabIndex.value === experiences.value.length - 1) {
+        experienceActiveTabIndex.value = 0
+      } else {
+        experienceActiveTabIndex.value++
+      }
+    }
+    return {
+      experienceActiveTab,
+      experienceActiveTabIndex,
+      experienceTabPrev,
+      experienceTabNext,
+    }
   },
 })
 </script>
@@ -50,16 +84,16 @@ export default defineComponent({
   .experience_page-image {
     @apply duration-300 w-screen h-screen absolute top-0 left-0 overflow-hidden flex items-center justify-center;
     img {
-      object-fit: cover;
+      @apply object-cover;
     }
   }
   .experience_page-indicators {
     @apply duration-300 absolute top-1/2 left-0 z-10 transform -translate-y-1/2;
     .up {
-      @apply w-14 h-14 bg-white flex justify-center items-center text-3xl;
+      @apply duration-300 w-14 h-14 bg-white hover:bg-gray-400 cursor-pointer flex justify-center items-center text-3xl hover:text-white;
     }
     .down {
-      @apply w-14 h-14 bg-white flex justify-center items-center text-3xl;
+      @apply duration-300 w-14 h-14 bg-white hover:bg-gray-400 cursor-pointer flex justify-center items-center text-3xl hover:text-white;
     }
   }
   @media (max-width: 1280px) {
