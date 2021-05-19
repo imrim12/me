@@ -109,4 +109,24 @@ export default defineComponent({
     }
   }
 }
+.sip {
+  .sidebar-trigger {
+    .bar {
+      background-color: #07be1a;
+    }
+    &::after {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+  }
+}
+.thecodeorigin {
+  .sidebar-trigger {
+    .bar {
+      @apply bg-primary;
+    }
+    &::after {
+      @apply bg-white;
+    }
+  }
+}
 </style>

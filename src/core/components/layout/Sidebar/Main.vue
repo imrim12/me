@@ -64,10 +64,10 @@ export default defineComponent({
         label: 'Experience',
         route: { name: 'experience' },
       },
-      // {
-      //   label: 'Projects',
-      //   route: { name: 'projects' },
-      // },
+      {
+        label: 'Projects',
+        route: { name: 'projects' },
+      },
     ]
 
     const navigateTo = (route) => {

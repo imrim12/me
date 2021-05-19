@@ -1,5 +1,5 @@
 <template>
-  <div class="default_layout-wrapper">
+  <div class="default_layout-wrapper" :class="[$route.query.project]">
     <Sidebar />
     <SidebarTrigger
       v-if="$route.name !== 'home'"

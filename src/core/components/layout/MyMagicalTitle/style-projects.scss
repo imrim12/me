@@ -83,5 +83,36 @@
         }
       }
     }
+
+  }
+}
+.sip {
+  .my-magic-title {
+    /* PROJECTS PAGE OVERRIDE */
+    &.projects {
+      .my-magical-title-item {
+        &:nth-child(1) {
+          color: #07BE1A;
+          &::before {
+            background-color: rgba(255, 255, 255, 0.2);
+          }
+        }
+      }
+    }
+  }
+}
+.thecodeorigin {
+  .my-magic-title {
+    /* PROJECTS PAGE OVERRIDE */
+    &.projects {
+      .my-magical-title-item {
+        &:nth-child(1) {
+          color: var(--color-primary);
+          &::before {
+            background-color: white;
+          }
+        }
+      }
+    }
   }
 }
