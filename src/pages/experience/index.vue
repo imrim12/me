@@ -1,6 +1,10 @@
 <template>
   <div class="experience_page-wrapper page bg-gray-200">
-    <div class="experience_page-inner" :style="experienceActiveTab.theme">
+    <div
+      class="experience_page-inner"
+      :style="experienceActiveTab.theme"
+      v-if="!isMobile"
+    >
       <h1>{{ experienceActiveTab.place }} - {{ experienceActiveTab.role }}</h1>
       <p>{{ experienceActiveTab.description }}</p>
       <div>
@@ -14,6 +18,32 @@
         </a>
       </div>
     </div>
+    <!-- Modal -->
+    <div
+      v-if="isMobile"
+      class="experience_mobile_page-inner"
+      :class="[isVisible ? 'is-visible' : '']"
+      @click="isVisible = !isVisible"
+    >
+      <div v-if="isVisible">
+        <h1>
+          {{ experienceActiveTab.place }} - {{ experienceActiveTab.role }}
+        </h1>
+        <p>{{ experienceActiveTab.description }}</p>
+        <div>
+          <a
+            :href="tag.url"
+            target="_blank"
+            v-for="tag in experienceActiveTab.tags"
+            :key="'experience-tag-' + tag.label"
+          >
+            <b>#{{ tag.label }} </b>
+          </a>
+        </div>
+      </div>
+      <i v-else class="fas fa-info-circle"></i>
+    </div>
+    <!-- End modal -->
     <div class="experience_page-image">
       <transition name="fade" mode="out-in">
         <img
@@ -34,7 +64,7 @@
   </div>
 </template>
 <script>
-import { computed, defineComponent, ref } from '@vue/composition-api'
+import { computed, defineComponent, onMounted, ref } from '@vue/composition-api'
 import { data } from './config'
 
 export default defineComponent({
@@ -60,11 +90,24 @@ export default defineComponent({
         experienceActiveTabIndex.value++
       }
     }
+
+    const isMobile = ref(false)
+    const isVisible = ref(false)
+
+    onMounted(() => {
+      isMobile.value = window.innerWidth < 576
+      window.addEventListener('resize', (event) => {
+        isMobile.value = event.target.innerWidth < 576
+      })
+    })
+
     return {
       experienceActiveTab,
       experienceActiveTabIndex,
       experienceTabPrev,
       experienceTabNext,
+      isMobile,
+      isVisible,
     }
   },
 })
@@ -131,15 +174,24 @@ export default defineComponent({
       }
     }
   }
-  @media (max-width: 576px) {
-    .experience_page-inner {
-      max-height: 15rem !important;
-      max-width: 18rem !important;
+  .experience_mobile_page-inner {
+    @apply w-10 h-10 duration-300;
+    @apply flex items-center justify-center;
+    @apply fixed top-full left-0 z-50 bg-white text-primary p-5;
+    @apply transform -translate-y-full;
+    &.is-visible {
+      width: 80vw;
+      height: 80vh;
+      @apply text-gray overflow-y-scroll;
+      @apply top-1/2 left-1/2;
+      @apply items-start;
+      @apply -translate-y-1/2  -translate-x-1/2;
     }
-  }
-  @media (max-width: 340px) {
-    .experience_page-inner {
-      max-width: 15rem !important;
+    h1 {
+      @apply text-3xl font-bold;
+    }
+    p {
+      margin: 0.75rem 0;
     }
   }
 }
