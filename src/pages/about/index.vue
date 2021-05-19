@@ -54,7 +54,7 @@
     </div>
     <div class="about_page_avatar-container">
       <img
-        src="/img/me/2.jpg"
+        src="/img/me/2.JPG"
         alt="Nguyễn Hữu Nguyên Ý"
         class="duration-500"
         style="opacity: 0;"
