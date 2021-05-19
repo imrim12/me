@@ -52,10 +52,10 @@ export default defineComponent({
         label: 'Home',
         route: { name: 'home' },
       },
-      // {
-      //   label: 'About',
-      //   route: { name: 'about' },
-      // },
+      {
+        label: 'About',
+        route: { name: 'about' },
+      },
       {
         label: 'Skills',
         route: { name: 'skills' },
