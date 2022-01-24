@@ -72,7 +72,7 @@ export default defineComponent({
   setup() {
     const about = ref({
       fullName: 'Nguyễn Hữu Nguyên Ý',
-      age: 22,
+      age: new Date().getFullYear() - 1999,
       introduction: `I have been in website development industry for 4 years,
       have experience in Wordpress or pure HTML, CSS and JS websites, also
       have 3 year experience in VueJS and NuxtJS. I have advanced skills in
@@ -98,11 +98,11 @@ export default defineComponent({
           year: '2014 - 2017',
         },
       ],
-      moreAboutMe: `I’m currently a fourth year student in Danang university of science and technology (DUT).
-      For school projects, i’ve explored and used many technologies to get the jobs done: GCP, AWS, C#,
+      moreAboutMe: `I'm currently a fourth year student in Danang university of science and technology (DUT).
+      For school projects, i've explored and used many technologies to get the jobs done: GCP, AWS, C#,
       Java, Nest.js, Express, React Native, Tensorflow with Python on raspberry pi, Vue, React, Angular...
-      I’m also the community leader at DSC-DUT. My desire is to create impact in the community by building
-      awesome products to solve local people’s problems.
+      I'm also the community leader at DSC-DUT. My desire is to create impact in the community by building
+      awesome products to solve local people's problems.
       I like kimbap, sushi, pizza, spaghetti, ice cream and karaoke.
       `,
     })

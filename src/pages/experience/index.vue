@@ -45,13 +45,14 @@
     </div>
     <!-- End modal -->
     <div class="experience_page-image">
-      <transition name="fade" mode="out-in">
-        <img
-          :key="experienceActiveTab.image.src"
-          :src="experienceActiveTab.image.src"
-          :alt="experienceActiveTab.image.alt"
-        />
-      </transition>
+      <img
+        class="duration-500"
+        style="opacity: 0;"
+        onload="this.style.opacity = 1;"
+        :key="experienceActiveTab.image.src"
+        :src="experienceActiveTab.image.src"
+        :alt="experienceActiveTab.image.alt"
+      />
     </div>
     <div class="experience_page-indicators">
       <div class="up" @click="experienceTabPrev">
@@ -127,7 +128,7 @@ export default defineComponent({
   .experience_page-image {
     @apply duration-300 w-screen h-screen absolute top-0 left-0 overflow-hidden flex items-center justify-center;
     img {
-      @apply object-cover;
+      @apply w-full object-cover;
     }
   }
   .experience_page-indicators {

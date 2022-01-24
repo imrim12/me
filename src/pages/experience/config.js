@@ -13,14 +13,37 @@ export const routes = [
 
 export const data = [
   {
+    place: 'Paradox Vietnam',
+    role: 'Frontend developer',
+    description: `Olivia - The conversational AI assistant saving the world's best talent acquisition teams countless hours. I'm currenlty working on the UI side for a specific component, the project grows super fast on a huge base code including legacy Javascript code and modern Nuxt.js.`,
+    tags: [
+      {
+        label: 'ParadoxAI',
+        url: 'https://www.paradox.ai/',
+      },
+      {
+        label: 'Olivia',
+        url: 'https://www.paradox.ai/',
+      },
+    ],
+    image: {
+      src: '/img/me/10.png',
+      alt: 'ParadoxVietnam',
+    },
+    theme: {
+      background: '#25C9D0',
+      color: 'white',
+    },
+  },
+  {
     place: 'Google developer student clubs',
-    role: 'Lead',
+    role: 'Lead 2020 - 2021',
     description: `After spending one year in DSC, I wanted to lead the community to build
     amazing products for the community, hold technology events for students
     in my campus.`,
     tags: [
       {
-        label: 'DSC-DUT',
+        label: 'GDSC-DUT',
         url: 'https://www.facebook.com/dscdut',
       },
       {
@@ -28,13 +51,13 @@ export const data = [
         url: 'https://google.com',
       },
       {
-        label: 'Developer student clubs',
+        label: 'Google Developer student clubs',
         url: 'https://dsc.community.dev/da-nang-university-of-technology',
       },
     ],
     image: {
       src: '/img/me/8.jpg',
-      alt: 'DSC Info Session 2020',
+      alt: 'GDSC Info Session 2020',
     },
   },
   {
