@@ -38,7 +38,8 @@ export const data = [
       },
     ],
     image: {
-      src: '/img/projects/1.png',
+      src:
+        'https://res.cloudinary.com/i-m-rim/image/upload/v1669384806/personal/experience/1_ma0af9.png',
       alt: 'SiP - A side-project community',
     },
     theme: {
@@ -59,7 +60,8 @@ export const data = [
       },
     ],
     image: {
-      src: '/img/projects/2.png',
+      src:
+        'https://res.cloudinary.com/i-m-rim/image/upload/v1669384804/personal/experience/2_vedbd8.png',
       alt: 'thecodeorigin',
     },
     theme: {
@@ -80,7 +82,8 @@ export const data = [
       },
     ],
     image: {
-      src: '/img/projects/3.png',
+      src:
+        'https://res.cloudinary.com/i-m-rim/image/upload/v1669384804/personal/experience/3_fov4cg.png',
       alt: 'unigo',
     },
     theme: {
@@ -101,7 +104,8 @@ export const data = [
       },
     ],
     image: {
-      src: '/img/projects/4.png',
+      src:
+        'https://res.cloudinary.com/i-m-rim/image/upload/v1669384804/personal/experience/4_xmbsxq.png',
       alt: 'eavesdrop',
     },
     theme: {

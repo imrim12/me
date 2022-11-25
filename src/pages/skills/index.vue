@@ -2,7 +2,7 @@
   <div class="skills_page-wrapper page">
     <div class="skills_page_avatar-container">
       <img
-        src="/img/me/7.jpg"
+        src="https://res.cloudinary.com/i-m-rim/image/upload/v1669384782/personal/me/7_jtgfbv.jpg"
         alt="Nguyễn Hữu Nguyên Ý"
         class="duration-500"
         style="opacity: 0;"

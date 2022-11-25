@@ -3,7 +3,7 @@
     <div class="h-full flex-1"></div>
     <div class="home_page_avatar-container h-full flex-1">
       <img
-        src="/img/me/1.jpg"
+        src="https://res.cloudinary.com/i-m-rim/image/upload/v1669384777/personal/me/1_m5yzqa.jpg"
         alt="Nguyễn Hữu Nguyên Ý"
         class="duration-500"
         style="opacity: 0;"

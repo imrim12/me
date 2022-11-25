@@ -27,7 +27,8 @@ export const data = [
       },
     ],
     image: {
-      src: '/img/me/10.png',
+      src:
+        'https://res.cloudinary.com/i-m-rim/image/upload/v1669384776/personal/me/10_kba0cx.jpg',
       alt: 'ParadoxVietnam',
     },
     theme: {
@@ -56,7 +57,8 @@ export const data = [
       },
     ],
     image: {
-      src: '/img/me/8.jpg',
+      src:
+        'https://res.cloudinary.com/i-m-rim/image/upload/v1669384780/personal/me/8_gqsmss.jpg',
       alt: 'GDSC Info Session 2020',
     },
   },
@@ -73,7 +75,8 @@ export const data = [
       },
     ],
     image: {
-      src: '/img/me/9.png',
+      src:
+        'https://res.cloudinary.com/i-m-rim/image/upload/v1669384779/personal/me/9_g9mup8.png',
       alt: 'Nestsera Technology',
     },
     theme: {
@@ -93,8 +96,9 @@ export const data = [
       },
     ],
     image: {
-      src: '/img/me/10.jpg',
-      alt: 'DSC Info Session 2020',
+      src:
+        'https://res.cloudinary.com/i-m-rim/image/upload/v1669384778/personal/me/10_zqr93g.png',
+      alt: 'GDSC Info Session 2020',
     },
     theme: {
       background: '#EB8205',
