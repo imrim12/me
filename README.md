@@ -1,45 +1,42 @@
-# vue-template
+# Nuxt 3 Minimal Starter
 
-Inspired by vue-enterprise-template
-See the [vue-enterprise-template repo](https://github.com/chrisvfritz/vue-enterprise-boilerplate)
+Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
 
-## Project setup
+## Setup
 
-``` bash
-# Setup alias
-node _start.js
+Make sure to install the dependencies:
 
+```bash
+# yarn
+yarn install
+
+# npm
 npm install
-# OR
-yarn
+
+# pnpm
+pnpm install
 ```
 
-### Compiles and hot-reloads for development
+## Development Server
 
-``` bash
+Start the development server on http://localhost:3000
+
+```bash
 npm run dev
-# OR
-yarn dev
 ```
 
-### Compiles and minifies for production
+## Production
 
-``` bash
+Build the application for production:
+
+```bash
 npm run build
-# OR
-yarn build
 ```
 
-### Lints and fixes files
+Locally preview production build:
 
-``` bash
-npm run lint
-# OR
-yarn lint
-# lint and fix
-yarn lint --fix
+```bash
+npm run preview
 ```
 
-### Customize configuration
-
-See [Configuration Reference](https://cli.vuejs.org/config/).
+Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.

@@ -1,1 +1,0 @@
-# thecodeorigin.com UI component
