@@ -1,6 +1,6 @@
 <template>
   <div class="h-screen w-screen">
-    <Window v-model:visible="abc" />
+    <DirectoryWindow v-model:visible="abc" />
   </div>
 </template>
 
