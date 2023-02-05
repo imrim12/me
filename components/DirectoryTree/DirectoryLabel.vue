@@ -1,5 +1,8 @@
 <template>
-  <span class="block text-gray-100 hover:bg-gray-500" :style="{ paddingLeft: paddingComputed }">
+  <span
+    class="flex items-center h-6 text-gray-100 text-sm hover:bg-gray-500"
+    :style="{ paddingLeft: paddingComputed }"
+  >
     {{ directory.name }}
   </span>
 </template>
@@ -15,5 +18,7 @@ const props = defineProps({
   },
 });
 
-const paddingComputed = computed(() => `${props.index ? props.index.split(".").length * 16 : 0}px`);
+const paddingComputed = computed(
+  () => `${(props.index ? props.index.split(".").length * 1 : 0) + 0.5}rem`,
+);
 </script>
