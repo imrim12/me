@@ -2,13 +2,20 @@ import interact from "interactjs";
 
 export const useWindowInteraction = () => {
   const windowResizeableContainerRef = ref<HTMLElement>();
+  const windowResizableSidebarRef = ref<HTMLElement>();
   const windowDraggableHeaderRef = ref<HTMLElement>();
 
-  onMounted(() => {
+  let windowResizeableContainerInteractable: Interact.Interactable | null = null;
+  let windowResizableSidebarInteractable: Interact.Interactable | null = null;
+  let windowDraggableHeaderInteractable: Interact.Interactable | null = null;
+
+  const initWindowInteraction = () => {
     const position = { x: 0, y: 0 };
 
     if (windowResizeableContainerRef.value) {
-      interact(windowResizeableContainerRef.value).resizable({
+      windowResizeableContainerInteractable = interact(
+        windowResizeableContainerRef.value,
+      ).resizable({
         edges: { top: true, left: true, bottom: true, right: true },
         listeners: {
           move: function (event) {
@@ -18,8 +25,8 @@ export const useWindowInteraction = () => {
             y = (parseFloat(y) || 0) + event.deltaRect.top;
 
             Object.assign(event.target.style, {
-              width: `${event.rect.width}px`,
-              height: `${event.rect.height}px`,
+              width: `${event.rect.width <= 200 ? 200 : event.rect.width}px`,
+              height: `${event.rect.height <= 200 ? 200 : event.rect.height}px`,
               transform: `translate(${position.x + x}px, ${position.y + y}px)`,
             });
 
@@ -29,13 +36,23 @@ export const useWindowInteraction = () => {
       });
     }
 
+    if (windowResizableSidebarRef.value) {
+      windowResizableSidebarInteractable = interact(windowResizableSidebarRef.value).resizable({
+        edges: { right: true },
+        listeners: {
+          move: function (event) {
+            Object.assign(event.target.style, {
+              width: `${event.rect.width <= 100 ? 100 : event.rect.width}px`,
+            });
+          },
+        },
+      });
+    }
+
     if (windowDraggableHeaderRef.value) {
-      interact(windowDraggableHeaderRef.value).draggable({
+      windowDraggableHeaderInteractable = interact(windowDraggableHeaderRef.value).draggable({
         cursorChecker: () => "default",
         listeners: {
-          start(event) {
-            console.log(event.type, event.target);
-          },
           move(event) {
             position.x += event.dx;
             position.y += event.dy;
@@ -47,10 +64,20 @@ export const useWindowInteraction = () => {
         },
       });
     }
-  });
+  };
+
+  const removeWindowInteraction = () => {
+    windowResizeableContainerInteractable?.unset();
+    windowResizableSidebarInteractable?.unset();
+    windowDraggableHeaderInteractable?.unset();
+  };
+
+  onMounted(initWindowInteraction);
+  onUnmounted(removeWindowInteraction);
 
   return {
     windowResizeableContainerRef,
     windowDraggableHeaderRef,
+    windowResizableSidebarRef,
   };
 };

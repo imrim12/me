@@ -2,7 +2,7 @@
   <Teleport v-if="visible" to="body">
     <div
       ref="windowResizeableContainerRef"
-      class="fixed top-0 left-0 h-lg w-xl border-1 border-gray-200 flex flex-col"
+      class="fixed top-20 left-48 h-lg w-xl border-1 border-gray-700 flex flex-col transform"
     >
       <header
         ref="windowDraggableHeaderRef"
@@ -10,29 +10,36 @@
       >
         <div class="flex flex-row items-center h-full gap-2 px-2 text-gray-200 text-sm">
           <button>
-            <i class="fa-solid fa-folder" />
+            <Icon class="fa-solid fa-folder" />
           </button>
           <span>|</span>
           <button>
-            <i class="fa-regular fa-file"></i>
+            <Icon class="fa-regular fa-file" />
           </button>
           <button>
-            <i class="fa-solid fa-folder" />
+            <Icon class="fa-solid fa-folder" />
           </button>
           <span>|</span>
           <span>
-            {{ currentDirectory.name }}
+            {{ directory.name }}
           </span>
         </div>
         <div class="flex flex-row items-center h-full text-gray-200 text-sm">
           <button class="h-full w-12 bg-gray-900 hover:bg-gray-800" @click="minimizeWindow">
-            <i class="fa-solid fa-window-minimize"></i>
+            <Icon class="fa-solid fa-window-minimize" />
           </button>
-          <button class="h-full w-12 bg-gray-900 hover:bg-gray-800" @click="maximizeWindow">
-            <i class="fa-solid fa-window-maximize"></i>
+          <button
+            v-if="isMaximized"
+            class="h-full w-12 bg-gray-900 hover:bg-gray-800"
+            @click="restoreWindow"
+          >
+            <Icon class="fa-solid fa-window-restore" />
+          </button>
+          <button v-else class="h-full w-12 bg-gray-900 hover:bg-gray-800" @click="maximizeWindow">
+            <Icon class="fa-solid fa-window-maximize" />
           </button>
           <button class="h-full w-12 bg-gray-900 hover:bg-red-700" @click="closeWindow">
-            <i class="fa-solid fa-xmark" />
+            <Icon class="fa-solid fa-xmark" />
           </button>
         </div>
       </header>
@@ -44,36 +51,39 @@
       <div class="flex flex-row items-center h-10 bg-gray-900">
         <div class="flex flex-row items-center w-24 gap-2 px-2 text-gray-200">
           <button>
-            <i class="fa-solid fa-circle-arrow-left"></i>
+            <Icon class="fa-solid fa-circle-arrow-left" />
           </button>
           <button>
-            <i class="fa-solid fa-circle-arrow-right"></i>
+            <Icon class="fa-solid fa-circle-arrow-right" />
           </button>
           <button class="text-xs">
-            <i class="fa-solid fa-caret-down"></i>
+            <Icon class="fa-solid fa-caret-down" />
           </button>
           <button>
-            <i class="fa-solid fa-arrow-up"></i>
+            <Icon class="fa-solid fa-arrow-up" />
           </button>
         </div>
-        <!-- Breadcrumb -->
         <div class="flex-1 h-full py-2 pr-2">
-          <!--  -->
           <div class="border-1 border-gray-600 h-full"></div>
         </div>
         <div class="w-40 h-full py-2 pr-2 bg-gray-900 text-gray-200">
           <div class="flex flex-row items-center border-1 border-gray-600 pl-3 text-xs h-full">
-            <i class="fa-solid fa-magnifying-glass"></i>
-            <input
-              type="text"
-              class="w-32 bg-transparent pl-3 pr-1 !outline-none"
-              :placeholder="'Search ' + currentDirectory.name"
-            />
+            <Icon class="fa-solid fa-magnifying-glass" />
+            <span>
+              <input
+                type="text"
+                class="w-32 bg-transparent pl-3 pr-1 !outline-none"
+                :placeholder="'Search ' + directory.name"
+              />
+            </span>
           </div>
         </div>
       </div>
       <main class="flex flex-1 flex-row overflow-hidden">
-        <aside class="border-r-1 border-gray-700 h-full w-64 bg-gray-900 overflow-y-auto">
+        <aside
+          ref="windowResizableSidebarRef"
+          class="border-r-1 border-gray-700 h-full w-52 bg-gray-900 overflow-y-auto"
+        >
           <DirectoryTree :directory="sidebarDirectory" />
         </aside>
         <section class="flex-1 h-full bg-gray-800">
@@ -86,13 +96,25 @@
 </template>
 
 <script lang="ts" setup>
+import { PropType } from "vue";
+
 import { useRootStore } from "~~/store";
 
 import { useWindowInteraction } from "./useWindowInteraction";
 
-defineProps<{
-  visible: boolean;
-}>();
+const props = defineProps({
+  visible: {
+    type: Boolean,
+    default: false,
+  },
+  directory: {
+    type: Object as PropType<Directory>,
+    default: () => ({
+      name: "Directory",
+      path: "directory",
+    }),
+  },
+});
 
 const emit = defineEmits<{
   (event: "update:visible", value: boolean): void;
@@ -100,11 +122,10 @@ const emit = defineEmits<{
 
 const rootStore = useRootStore();
 
-const currentDirectory = computed(() => rootStore.$state.currentDirectory);
-
 const sidebarDirectory = computed(() => rootStore.$state.sidebarDirectory);
 
-const { windowDraggableHeaderRef, windowResizeableContainerRef } = useWindowInteraction();
+const { windowDraggableHeaderRef, windowResizeableContainerRef, windowResizableSidebarRef } =
+  useWindowInteraction();
 
 const show = () => {
   emit("update:visible", true);
@@ -114,9 +135,34 @@ const hide = () => {
   emit("update:visible", false);
 };
 
-const minimizeWindow = () => {};
+const minimizeWindow = hide;
 
-const maximizeWindow = () => {};
+const isMaximized = ref(false);
+const maximizeWindow = () => {
+  isMaximized.value = true;
+  if (windowResizeableContainerRef.value) {
+    windowResizeableContainerRef.value.style.top = "0px";
+    windowResizeableContainerRef.value.style.left = "0px";
+    windowResizeableContainerRef.value.style.width = "100vw";
+    windowResizeableContainerRef.value.style.height = "100vh";
+    windowResizeableContainerRef.value.style.transform = "translate(0, 0)";
+  }
+};
 
-const closeWindow = () => {};
+const restoreWindow = () => {
+  isMaximized.value = false;
+  if (windowResizeableContainerRef.value) {
+    windowResizeableContainerRef.value.style.top = "80px";
+    windowResizeableContainerRef.value.style.left = "192px";
+    windowResizeableContainerRef.value.style.width = "576px";
+    windowResizeableContainerRef.value.style.height = "512px";
+    windowResizeableContainerRef.value.style.transform = "translate(0, 0)";
+  }
+};
+
+const closeWindow = () => {
+  hide();
+
+  rootStore.removeDirectory(props.directory);
+};
 </script>

@@ -2,10 +2,25 @@ import { defineStore } from "pinia";
 
 export const useRootStore = defineStore("root", {
   state: () => ({
-    currentDirectory: {
-      name: "Projects",
-      path: "projects",
-    },
+    availableDirectories: [
+      {
+        name: "About",
+        path: "about",
+      },
+      {
+        name: "Skills",
+        path: "skills",
+      },
+      {
+        name: "Experience",
+        path: "experience",
+      },
+      {
+        name: "Projects",
+        path: "projects",
+      },
+    ] as Array<Directory>,
+    openedDirectories: [] as Array<Directory>,
     sidebarDirectory: {
       name: "Quick access",
       path: "quick-access",
@@ -31,4 +46,13 @@ export const useRootStore = defineStore("root", {
       ],
     } as Directory,
   }),
+
+  actions: {
+    addDirectory(directory: Directory) {
+      this.openedDirectories.push(directory);
+    },
+    removeDirectory(directory: Directory) {
+      this.openedDirectories = this.openedDirectories.filter((dir) => dir.path !== directory.path);
+    },
+  },
 });

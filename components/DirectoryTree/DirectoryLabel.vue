@@ -1,6 +1,6 @@
 <template>
   <span
-    class="flex items-center h-6 text-gray-100 text-sm hover:bg-gray-500"
+    class="flex items-center h-6 text-gray-100 text-sm hover:bg-gray-500 cursor-pointer"
     :style="{ paddingLeft: paddingComputed }"
   >
     {{ directory.name }}
