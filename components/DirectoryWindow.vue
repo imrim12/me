@@ -2,7 +2,8 @@
   <Teleport v-if="visible" to="body">
     <div
       ref="windowResizeableContainerRef"
-      class="fixed top-20 left-48 h-lg w-xl border-1 border-gray-700 flex flex-col transform"
+      class="fixed h-lg w-xl border-1 border-gray-700 flex flex-col transform"
+      :style="{ zIndex, top: `${offset + 80}px`, left: `${offset + 192}px` }"
     >
       <header
         ref="windowDraggableHeaderRef"
@@ -114,10 +115,15 @@ const props = defineProps({
       path: "directory",
     }),
   },
+  offset: {
+    type: Number,
+    default: 0,
+  },
 });
 
 const emit = defineEmits<{
   (event: "update:visible", value: boolean): void;
+  (event: "mousedown"): void;
 }>();
 
 const rootStore = useRootStore();
@@ -163,6 +169,16 @@ const restoreWindow = () => {
 const closeWindow = () => {
   hide();
 
-  rootStore.removeDirectory(props.directory);
+  rootStore.removeOpenedDirectory(props.directory);
 };
+
+const directoryIndex = computed(() => {
+  return rootStore.$state.openedDirectories.findIndex(
+    (directory) => directory.path === props.directory.path,
+  );
+});
+
+const zIndex = computed(() => {
+  return rootStore.$state.openedDirectories.length - directoryIndex.value + 1;
+});
 </script>

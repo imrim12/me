@@ -11,15 +11,24 @@
         :directory="directory"
       />
     </main>
-    <footer class="flex gap-2 h-10 bg-dark-700 bg-opacity-50 text-gray-200 text-xl">
-      <span
+    <footer
+      class="fixed bottom-0 w-full z-50 flex gap-2 h-10 bg-dark-700 bg-opacity-80 text-gray-200 text-xl"
+    >
+      <tippy-singleton
         v-for="directory in openedDirectories"
         :key="directory.path"
-        class="inline-flex items-center justify-center h-full w-10 border-b-2 border-b-gray-600"
-        @click="handleOpenDirectory(directory)"
+        move-transition="transform 0.2s ease-out"
+        placement="top"
       >
-        <Icon class="fa-solid fa-folder-closed" />
-      </span>
+        <tippy :content="directory.name">
+          <span
+            class="inline-flex items-center justify-center h-full w-10 border-b-2 border-b-gray-600"
+            @click="handleOpenDirectory(directory)"
+          >
+            <Icon class="fa-solid fa-folder-closed" />
+          </span>
+        </tippy>
+      </tippy-singleton>
     </footer>
   </div>
 </template>

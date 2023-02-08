@@ -48,11 +48,16 @@ export const useRootStore = defineStore("root", {
   }),
 
   actions: {
-    addDirectory(directory: Directory) {
-      this.openedDirectories.push(directory);
+    addOpenedDirectory(directory: Directory) {
+      this.openedDirectories = [directory, ...this.openedDirectories];
     },
-    removeDirectory(directory: Directory) {
+    removeOpenedDirectory(directory: Directory) {
       this.openedDirectories = this.openedDirectories.filter((dir) => dir.path !== directory.path);
+    },
+    swapOpenedDirectories(index1: number, index2: number) {
+      const _dirs = this.openedDirectories;
+
+      [_dirs[index1], _dirs[index2]] = [_dirs[index2], _dirs[index1]];
     },
   },
 });

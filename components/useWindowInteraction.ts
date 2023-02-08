@@ -9,38 +9,48 @@ export const useWindowInteraction = () => {
   let windowResizableSidebarInteractable: Interact.Interactable | null = null;
   let windowDraggableHeaderInteractable: Interact.Interactable | null = null;
 
+  const vm = getCurrentInstance()?.proxy;
+
   const initWindowInteraction = () => {
     const position = { x: 0, y: 0 };
 
     if (windowResizeableContainerRef.value) {
-      windowResizeableContainerInteractable = interact(
-        windowResizeableContainerRef.value,
-      ).resizable({
-        edges: { top: true, left: true, bottom: true, right: true },
-        listeners: {
-          move: function (event) {
-            let { x, y } = event.target.dataset;
+      windowResizeableContainerInteractable = interact(windowResizeableContainerRef.value)
+        .on("tap", () => {
+          vm?.$emit("mousedown");
+        })
+        .resizable({
+          edges: { top: true, left: true, bottom: true, right: true },
+          listeners: {
+            start() {
+              vm?.$emit("mousedown");
+            },
+            move(event) {
+              let { x, y } = event.target.dataset;
 
-            x = (parseFloat(x) || 0) + event.deltaRect.left;
-            y = (parseFloat(y) || 0) + event.deltaRect.top;
+              x = (parseFloat(x) || 0) + event.deltaRect.left;
+              y = (parseFloat(y) || 0) + event.deltaRect.top;
 
-            Object.assign(event.target.style, {
-              width: `${event.rect.width <= 200 ? 200 : event.rect.width}px`,
-              height: `${event.rect.height <= 200 ? 200 : event.rect.height}px`,
-              transform: `translate(${position.x + x}px, ${position.y + y}px)`,
-            });
+              Object.assign(event.target.style, {
+                width: `${event.rect.width <= 200 ? 200 : event.rect.width}px`,
+                height: `${event.rect.height <= 200 ? 200 : event.rect.height}px`,
+                transform: `translate(${position.x + x}px, ${position.y + y}px)`,
+              });
 
-            Object.assign(event.target.dataset, { x, y });
+              Object.assign(event.target.dataset, { x, y });
+            },
           },
-        },
-      });
+        });
     }
 
     if (windowResizableSidebarRef.value) {
       windowResizableSidebarInteractable = interact(windowResizableSidebarRef.value).resizable({
         edges: { right: true },
         listeners: {
-          move: function (event) {
+          start() {
+            vm?.$emit("mousedown");
+          },
+          move(event) {
             Object.assign(event.target.style, {
               width: `${event.rect.width <= 100 ? 100 : event.rect.width}px`,
             });
@@ -53,6 +63,9 @@ export const useWindowInteraction = () => {
       windowDraggableHeaderInteractable = interact(windowDraggableHeaderRef.value).draggable({
         cursorChecker: () => "default",
         listeners: {
+          start() {
+            vm?.$emit("mousedown");
+          },
           move(event) {
             position.x += event.dx;
             position.y += event.dy;

@@ -18,6 +18,8 @@
       v-model:visible="isDirectoryWindowVisible"
       :key="forceRender"
       :directory="directory"
+      :offset="windowPositionOffset"
+      @mousedown="handleBringDirectoryToFront"
     />
   </span>
 </template>
@@ -36,8 +38,6 @@ const props = defineProps({
   },
 });
 
-const router = useRouter();
-
 const directoryRef = ref(null);
 
 const isDirectorySelected = ref(false);
@@ -53,20 +53,31 @@ const rootStore = useRootStore();
 
 const isDirectoryWindowVisible = ref(false);
 const forceRender = ref(1);
+const windowPositionOffset = ref(0);
+
+const directoryIndex = computed(() => {
+  return rootStore.$state.openedDirectories.findIndex(
+    (directory) => directory.path === props.directory.path,
+  );
+});
+
 const handleOpenDirectory = () => {
   isDirectoryWindowVisible.value = true;
   forceRender.value += 1;
-  router.push({
-    query: {
-      path: props.directory.path,
-    },
-  });
 
   if (
     !rootStore.$state.openedDirectories.find((directory) => directory.path === props.directory.path)
   ) {
-    rootStore.addDirectory(props.directory);
+    rootStore.addOpenedDirectory(props.directory);
+
+    windowPositionOffset.value += rootStore.$state.openedDirectories.length * 40;
   }
+};
+
+const handleBringDirectoryToFront = () => {
+  if (directoryIndex.value === -1) return;
+
+  rootStore.swapOpenedDirectories(0, directoryIndex.value);
 };
 
 defineExpose({

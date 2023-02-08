@@ -20,6 +20,7 @@
   "dependencies": {
     "@pinia/nuxt": "^0.4.6",
     "interactjs": "^1.10.17",
-    "pinia": "^2.0.30"
+    "pinia": "^2.0.30",
+    "vue-tippy": "^6.0.0"
   }
 }
