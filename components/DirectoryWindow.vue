@@ -3,7 +3,17 @@
     <div
       ref="windowResizeableContainerRef"
       class="fixed h-lg w-xl border-1 border-gray-700 flex flex-col transform"
-      :style="{ zIndex, top: `${offset + 80}px`, left: `${offset + 192}px` }"
+      :style="
+        Object.assign(
+          { zIndex },
+          isMaximized
+            ? {
+                top: '0px',
+                left: '0px',
+              }
+            : { top: `${offset + 80}px`, left: `${offset + 192}px` },
+        )
+      "
     >
       <header
         ref="windowDraggableHeaderRef"
@@ -147,8 +157,6 @@ const isMaximized = ref(false);
 const maximizeWindow = () => {
   isMaximized.value = true;
   if (windowResizeableContainerRef.value) {
-    windowResizeableContainerRef.value.style.top = "0px";
-    windowResizeableContainerRef.value.style.left = "0px";
     windowResizeableContainerRef.value.style.width = "100vw";
     windowResizeableContainerRef.value.style.height = "100vh";
     windowResizeableContainerRef.value.style.transform = "translate(0, 0)";
@@ -158,8 +166,6 @@ const maximizeWindow = () => {
 const restoreWindow = () => {
   isMaximized.value = false;
   if (windowResizeableContainerRef.value) {
-    windowResizeableContainerRef.value.style.top = "80px";
-    windowResizeableContainerRef.value.style.left = "192px";
     windowResizeableContainerRef.value.style.width = "576px";
     windowResizeableContainerRef.value.style.height = "512px";
     windowResizeableContainerRef.value.style.transform = "translate(0, 0)";
