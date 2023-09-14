@@ -14,7 +14,7 @@ export const routes = [
 export const data = [
   {
     place: 'Paradox Vietnam',
-    role: 'Frontend developer',
+    role: 'Team Lead - Frontend developer',
     description: `Olivia - The conversational AI assistant saving the world's best talent acquisition teams countless hours. I'm currenlty working on the UI side for a specific component, the project grows super fast on a huge base code including legacy Javascript code and modern Nuxt.js.`,
     tags: [
       {
@@ -28,7 +28,7 @@ export const data = [
     ],
     image: {
       src:
-        'https://res.cloudinary.com/i-m-rim/image/upload/v1669384776/personal/me/10_kba0cx.jpg',
+        'https://res.cloudinary.com/i-m-rim/image/upload/v1669384778/personal/me/10_zqr93g.png',
       alt: 'ParadoxVietnam',
     },
     theme: {
@@ -64,7 +64,7 @@ export const data = [
   },
   {
     place: 'Nestsera technology',
-    role: 'Frontend developer',
+    role: 'Frontend Lead',
     description: `I have worked on 2 projects, both are management systems, using Nuxt.js SPA.
     As the frontend team leader, I defined the conventions, built the code base and managed
     merge requests on Gitlab.`,
@@ -97,8 +97,8 @@ export const data = [
     ],
     image: {
       src:
-        'https://res.cloudinary.com/i-m-rim/image/upload/v1669384778/personal/me/10_zqr93g.png',
-      alt: 'GDSC Info Session 2020',
+        'https://res.cloudinary.com/i-m-rim/image/upload/v1669384776/personal/me/10_kba0cx.jpg',
+      alt: 'S-Group non-profit organization',
     },
     theme: {
       background: '#EB8205',
