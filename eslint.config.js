@@ -1,7 +1,7 @@
 import antfu from '@antfu/eslint-config'
 
 export default antfu({
-  vue: true,
+  react: true,
   rules: {
     'no-alert': 'warn',
     'no-console': 'warn',
