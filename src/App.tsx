@@ -1,6 +1,7 @@
 import { Award, Briefcase, ChevronDown, ChevronUp, Code, Github, Globe, GraduationCap, Languages, Linkedin, MapPin, Phone } from 'lucide-react'
 import React, { useState } from 'react'
 
+// --- TYPE DEFINITIONS ---
 interface ContactLink {
   href: string
   text: string
@@ -61,34 +62,35 @@ interface CollapsibleCardProps {
 // Storing data separately makes the main component cleaner and easier to update.
 
 const contactLinks: ContactLink[] = [
-  { href: 'https://github.com', text: 'GitHub', icon: Github, className: 'bg-black text-white hover:bg-white hover:text-black', shadow: false },
-  { href: 'https://linkedin.com', text: 'LinkedIn', icon: Linkedin, className: 'bg-blue-500 text-white hover:bg-white hover:text-black', shadow: true },
-  { href: '#', text: 'Website', icon: Globe, className: 'bg-green-400 text-black hover:bg-white', shadow: true },
+  { href: 'https://github.com/nguyenhuunguyeny', text: 'GitHub', icon: Github, className: 'bg-black text-white hover:bg-white hover:text-black', shadow: false },
+  { href: 'https://www.linkedin.com/in/nguyenhuunguyeny/', text: 'LinkedIn', icon: Linkedin, className: 'bg-blue-500 text-white hover:bg-white hover:text-black', shadow: true },
+  { href: 'https://nguyenhuunguyeny.com/', text: 'Website', icon: Globe, className: 'bg-green-400 text-black hover:bg-white', shadow: true },
 ]
 
 const experienceData: Experience[] = [
-  { title: 'Senior Software Engineer, Team Lead', company: 'Paradox AI', period: 'Current', color: 'bg-red-400', details: ['Leading development team in building AI-powered recruitment solutions', 'Architecting scalable microservices using modern web technologies', 'Mentoring junior engineers and conducting code reviews', 'Implementing best practices for CI/CD and automated testing'] },
-  { title: 'Founder/CEO', company: 'TheCodeOrigin', period: '2020 - Present', color: 'bg-blue-400', details: ['Founded and built a software development agency from ground up', 'Delivered 50+ projects for clients across various industries', 'Built and managed a team of 10+ developers and designers', 'Established company processes, culture, and technical standards'] },
-  { title: 'Engineering Manager', company: 'Sanna Tour JSC', period: '2021 - 2023', color: 'bg-green-400', details: ['Managed engineering team for tourism booking platform', 'Implemented agile methodologies and sprint planning', 'Oversaw technical architecture decisions and database design', 'Integrated payment gateways and third-party APIs'] },
-  { title: 'Co-Organizer', company: 'GDG Cloud Da Nang', period: '2020 - Present', color: 'bg-yellow-300', details: ['Organizing tech meetups and workshops for 500+ community members', 'Coordinating with Google Developer Experts and speakers', 'Creating content and educational materials for cloud technologies', 'Building partnerships with local tech companies'] },
-  { title: 'Product Lead, Community Lead', company: 'Google DSC', period: '2019 - 2021', color: 'bg-purple-400', details: ['Led university developer community of 300+ students', 'Organized hackathons, workshops, and solution challenges', 'Mentored students on software development and career paths', 'Managed product development for community projects'] },
-  { title: 'Front-end Lead', company: 'Nestsera Technology', period: '2019 - 2020', color: 'bg-orange-400', details: ['Led front-end development using Vue.js and Nuxt.js', 'Built responsive and accessible web applications', 'Established component library and design system', 'Collaborated with designers and back-end developers'] },
+  { title: 'Senior Software Engineer', company: 'Paradox', period: 'Oct 2024 - Present', color: 'bg-red-400', details: ['Working with modern technologies to build scalable and robust systems for AI-powered recruitment solutions.'] },
+  { title: 'Founder', company: 'THECODEORIGIN CO.,LTD', period: 'Jan 2020 - Present', color: 'bg-blue-400', details: ['Founded a software development agency, delivering over 50 projects for various clients.', 'Built and led a team of more than 10 members, establishing company processes and culture.'] },
+  { title: 'Team Lead', company: 'Paradox', period: 'Dec 2023 - Oct 2024', color: 'bg-red-400', details: ['Led a team in Vietnam to develop and maintain AI-powered recruitment solutions.'] },
+  { title: 'Co-Organizer', company: 'GDG Cloud Da Nang', period: 'Apr 2020 - Present', color: 'bg-yellow-300', details: ['Co-organizing GDG Cloud Da Nang, building a tech community of over 500 members.', 'Organizing meetups, workshops, and fostering local tech talent.'] },
+  { title: 'Product Lead, Community Lead', company: 'Google Developer Student Clubs', period: 'Jul 2019 - Aug 2021', color: 'bg-purple-400', details: ['Led a university developer community, mentoring students and organizing events like hackathons and workshops.'] },
+  { title: 'Engineering Manager', company: 'Sanna Tour JSC', period: 'Jul 2021 - Oct 2023', color: 'bg-green-400', details: ['Managed the engineering team for a tourism booking platform.', 'Implemented agile methodologies and oversaw technical architecture.'] },
+  { title: 'Front-end Lead', company: 'Nestsera Technology', period: 'Oct 2019 - May 2020', color: 'bg-orange-400', details: ['Led front-end development using Vue.js and Nuxt.js, focusing on responsive and accessible web applications.'] },
 ]
 
 const projectData: Project[] = [
-  { title: 'n8nhosting.app', color: 'bg-cyan-300', description: 'Managed n8n workflow automation hosting platform', tech: ['Vue.js', 'Docker', 'Node.js'] },
-  { title: 'VietScript', color: 'bg-lime-300', description: 'Vietnamese programming language for education', tech: ['Compiler Design', 'TypeScript', 'Parser'] },
-  { title: 'TheCodeOrigin', color: 'bg-pink-300', description: 'Software development agency website and portfolio', tech: ['Nuxt.js', 'Tailwind CSS', 'Supabase'] },
-  { title: 'Scribe.cheap', color: 'bg-orange-300', description: 'Affordable transcription service platform', tech: ['React', 'AI/ML', 'Stripe'] },
-  { title: 'UniGO', color: 'bg-blue-300', description: 'University social network and collaboration tool', tech: ['Vue.js', 'Firebase', 'PWA'] },
-  { title: 'BeeBee.travel', color: 'bg-purple-300', description: 'Travel booking and itinerary planning platform', tech: ['Nuxt.js', 'PostgreSQL', 'Maps API'] },
+  { title: 'n8nhosting.app', color: 'bg-cyan-300', description: 'Managed hosting for n8n, a workflow automation tool.', tech: ['VueJS', 'Docker', 'NodeJS'] },
+  { title: 'VietScript', color: 'bg-lime-300', description: 'A Vietnamese programming language for educational purposes.', tech: ['Compiler', 'TypeScript', 'Parser'] },
+  { title: 'TheCodeOrigin', color: 'bg-pink-300', description: 'Website for my software development agency.', tech: ['NuxtJS', 'TailwindCSS', 'Supabase'] },
+  { title: 'Scribe.cheap', color: 'bg-orange-300', description: 'An affordable transcription service platform.', tech: ['React', 'AI/ML', 'Stripe'] },
+  { title: 'UniGO', color: 'bg-blue-300', description: 'A university social network and collaboration tool.', tech: ['VueJS', 'Firebase', 'PWA'] },
+  { title: 'BeeBee.travel', color: 'bg-purple-300', description: 'A travel booking and itinerary planning platform.', tech: ['NuxtJS', 'PostgreSQL', 'Maps API'] },
 ]
 
 const skillData: Skill[] = [
-  { name: 'JavaScript/TypeScript', color: 'bg-yellow-300', years: 'Since 2018' },
-  { name: 'Vue.js', color: 'bg-green-400', years: 'Since 2019' },
-  { name: 'Nuxt.js', color: 'bg-green-300', years: 'Since 2020' },
-  { name: 'PHP/Laravel', color: 'bg-purple-400', years: '2017 - 2022' },
+  { name: 'JavaScript / TypeScript', color: 'bg-yellow-300', years: 'Since 2018' },
+  { name: 'VueJS', color: 'bg-green-400', years: 'Since 2019' },
+  { name: 'NuxtJS', color: 'bg-green-300', years: 'Since 2020' },
+  { name: 'PHP / Laravel', color: 'bg-purple-400', years: '2017 - 2022' },
   { name: 'WordPress', color: 'bg-blue-400', years: '2017 - 2022' },
   { name: 'Web Development', color: 'bg-red-300', years: 'Since 2017' },
 ]
@@ -140,7 +142,7 @@ function ExperienceCard({ title, company, period, color, details }: Experience) 
   return (
     <CollapsibleCard
       className={`${color} border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]`}
-      headerClassName="p-4 hover:bg-opacity-5"
+      headerClassName="p-4 hover:bg-black hover:bg-opacity-5"
       bodyClassName="border-t-4 border-black bg-white p-4"
       headerContent={isOpen => (
         <>
@@ -172,7 +174,7 @@ function ProjectCard({ title, color, description, tech }: Project) {
   return (
     <CollapsibleCard
       className={`${color} border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]`}
-      headerClassName="w-full p-4 hover:bg-opacity-5"
+      headerClassName="w-full p-4 hover:bg-black hover:bg-opacity-5"
       bodyClassName="border-t-4 border-black bg-white p-4"
       headerContent={isOpen => (
         <>
@@ -209,7 +211,7 @@ function EducationCard({ school, period, color, details }: Education) {
   return (
     <CollapsibleCard
       className={`${color} border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]`}
-      headerClassName="w-full p-3 hover:bg-opacity-5"
+      headerClassName="w-full p-3 hover:bg-black hover:bg-opacity-5"
       bodyClassName="border-t-4 border-black bg-white p-3"
       headerContent={isOpen => (
         <>
@@ -240,7 +242,7 @@ function LanguageCard({ language, level, color, details }: Language) {
   return (
     <CollapsibleCard
       className={`${color} border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]`}
-      headerClassName="w-full p-3 hover:bg-opacity-5"
+      headerClassName="w-full p-3 hover:bg-black hover:bg-opacity-5"
       bodyClassName="border-t-4 border-black bg-white p-3"
       headerContent={isOpen => (
         <>
@@ -274,7 +276,7 @@ function SoftSkillCard({ skill, details }: SoftSkill) {
   return (
     <CollapsibleCard
       className="bg-white border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
-      headerClassName="w-full p-2 hover:bg-opacity-5"
+      headerClassName="w-full p-2 hover:bg-black hover:bg-opacity-5"
       bodyClassName="border-t-2 border-black bg-white p-2"
       headerContent={isOpen => (
         <>
