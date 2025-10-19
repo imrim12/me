@@ -1,9 +1,6 @@
 import { Award, Briefcase, ChevronDown, ChevronUp, Code, Github, Globe, GraduationCap, Languages, Linkedin, MapPin, Phone } from 'lucide-react'
 import React, { useState } from 'react'
 
-// --- TYPE DEFINITIONS ---
-// Defining types for all our data structures and component props.
-
 interface ContactLink {
   href: string
   text: string
@@ -114,13 +111,7 @@ const softSkillData: SoftSkill[] = [
   { skill: 'Design', details: ['Proficient in Figma and Adobe Creative Suite', 'Create wireframes and prototypes', 'Bridge design and development teams'] },
 ]
 
-// --- REUSABLE COMPONENTS ---
-
-/**
- * A generic collapsible card component that manages its own open/close state.
- * It's used as a base for all other card types (Experience, Project, etc.).
- */
-function CollapsibleCard({ headerContent, bodyContent, className, headerClassName, bodyClassName }: CollapsibleCardProps): JSX.Element {
+function CollapsibleCard({ headerContent, bodyContent, className, headerClassName, bodyClassName }: CollapsibleCardProps) {
   const [isOpen, setIsOpen] = useState<boolean>(false)
 
   return (
@@ -145,11 +136,11 @@ function CollapsibleCard({ headerContent, bodyContent, className, headerClassNam
 // --- SPECIFIC COMPONENTS ---
 // These components now use the generic CollapsibleCard and are much simpler.
 
-function ExperienceCard({ title, company, period, color, details }: Experience): JSX.Element {
+function ExperienceCard({ title, company, period, color, details }: Experience) {
   return (
     <CollapsibleCard
       className={`${color} border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]`}
-      headerClassName="p-4 hover:bg-black hover:bg-opacity-5"
+      headerClassName="p-4 hover:bg-opacity-5"
       bodyClassName="border-t-4 border-black bg-white p-4"
       headerContent={isOpen => (
         <>
@@ -177,11 +168,11 @@ function ExperienceCard({ title, company, period, color, details }: Experience):
   )
 }
 
-function ProjectCard({ title, color, description, tech }: Project): JSX.Element {
+function ProjectCard({ title, color, description, tech }: Project) {
   return (
     <CollapsibleCard
       className={`${color} border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]`}
-      headerClassName="w-full p-4 hover:bg-black hover:bg-opacity-5"
+      headerClassName="w-full p-4 hover:bg-opacity-5"
       bodyClassName="border-t-4 border-black bg-white p-4"
       headerContent={isOpen => (
         <>
@@ -205,7 +196,7 @@ function ProjectCard({ title, color, description, tech }: Project): JSX.Element 
   )
 }
 
-function SkillTag({ name, color, years }: Skill): JSX.Element {
+function SkillTag({ name, color, years }: Skill) {
   return (
     <div className={`${color} border-2 border-black p-2 font-bold text-sm flex justify-between items-center`}>
       <span>{name}</span>
@@ -214,11 +205,11 @@ function SkillTag({ name, color, years }: Skill): JSX.Element {
   )
 }
 
-function EducationCard({ school, period, color, details }: Education): JSX.Element {
+function EducationCard({ school, period, color, details }: Education) {
   return (
     <CollapsibleCard
       className={`${color} border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]`}
-      headerClassName="w-full p-3 hover:bg-black hover:bg-opacity-5"
+      headerClassName="w-full p-3 hover:bg-opacity-5"
       bodyClassName="border-t-4 border-black bg-white p-3"
       headerContent={isOpen => (
         <>
@@ -245,11 +236,11 @@ function EducationCard({ school, period, color, details }: Education): JSX.Eleme
   )
 }
 
-function LanguageCard({ language, level, color, details }: Language): JSX.Element {
+function LanguageCard({ language, level, color, details }: Language) {
   return (
     <CollapsibleCard
       className={`${color} border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]`}
-      headerClassName="w-full p-3 hover:bg-black hover:bg-opacity-5"
+      headerClassName="w-full p-3 hover:bg-opacity-5"
       bodyClassName="border-t-4 border-black bg-white p-3"
       headerContent={isOpen => (
         <>
@@ -279,11 +270,11 @@ function LanguageCard({ language, level, color, details }: Language): JSX.Elemen
   )
 }
 
-function SoftSkillCard({ skill, details }: SoftSkill): JSX.Element {
+function SoftSkillCard({ skill, details }: SoftSkill) {
   return (
     <CollapsibleCard
       className="bg-white border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
-      headerClassName="w-full p-2 hover:bg-black hover:bg-opacity-5"
+      headerClassName="w-full p-2 hover:bg-opacity-5"
       bodyClassName="border-t-2 border-black bg-white p-2"
       headerContent={isOpen => (
         <>
@@ -310,7 +301,7 @@ function SoftSkillCard({ skill, details }: SoftSkill): JSX.Element {
 // --- MAIN APP COMPONENT ---
 // Renders the entire resume page by mapping over the data constants.
 
-function App(): JSX.Element {
+function App() {
   return (
     <div className="min-h-screen bg-yellow-300 p-4 md:p-8">
       <div className="max-w-6xl mx-auto space-y-6">
